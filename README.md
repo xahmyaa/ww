@@ -22,27 +22,13 @@ It acts as a **replacement for the standard C runtime (crt0)**, making it perfec
   - `_exit`: Cleanly exit the program.
   - `_panic`: Print a red "panic: " message followed by your text, then exit.
 
-## Usage
-
-### 1. Build the Runtime
+## Build the Runtime
 
 ```bash
 make
 ```
 
 This produces `build/ww.o`.
-
-### 2. Link with Your Code
-
-**For C / Custom Languages:**
-
-Instead of linking with `crt1.o` / `gcrt1.o`, simply link your object files with `build/ww.o`.
-
-```bash
-# Example for GCC (freestanding)
-gcc -c my_code.c -o my_code.o
-ld build/ww.o my_code.o -o my_program
-```
 
 ## Structure
 
