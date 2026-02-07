@@ -1,9 +1,10 @@
-# Mini Runtime x86_64
+# ww: a mini x86_64 runtime
 
 A minimal, lightweight runtime for Linux x86_64, written in assembly.
 
-It acts as a replacement for the standard runtime, making it perfect for:
+It acts as a **replacement for the standard C runtime (crt0)**, making it perfect for:
 
+- Writing **C** code without the standard library (libc).
 - Writing **Assembly** applications.
 - Providing a **runtime for your own custom programming language**, avoiding the complexity of implementing your own startup code.
 
@@ -33,12 +34,14 @@ This produces `build/ww.o`.
 
 ### 2. Link with Your Code
 
-**For Custom Languages / Assembly:**
+**For C / Custom Languages:**
 
-Simply link your object files with `build/ww.o`.
+Instead of linking with `crt1.o` / `gcrt1.o`, simply link your object files with `build/ww.o`.
 
 ```bash
-ld build/ww.o my_program.o -o my_program
+# Example for GCC (freestanding)
+gcc -c my_code.c -o my_code.o
+ld build/ww.o my_code.o -o my_program
 ```
 
 ## Structure
